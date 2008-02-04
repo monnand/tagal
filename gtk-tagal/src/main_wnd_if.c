@@ -224,6 +224,10 @@ create_search_wnd (void)
   gtk_entry_set_text(GTK_ENTRY(text_input_entry), _("Input tags"));
   gtk_editable_select_region(GTK_EDITABLE(text_input_entry), 0, -1);
 
+  g_signal_connect ((gpointer) search_wnd, "delete-event",
+		  G_CALLBACK (on_search_wnd_delete_event),
+		  &search_main_wnd_arg);
+
   g_signal_connect ((gpointer) add_file_button, "clicked",
                     G_CALLBACK (on_add_file_button_clicked),
                     &search_main_wnd_arg);

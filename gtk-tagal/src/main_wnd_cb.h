@@ -1,5 +1,9 @@
 #include <gtk/gtk.h>
 
+gboolean
+on_search_wnd_delete_event	      (GtkWidget *widget,
+					GdkEvent  *event,
+				       	gpointer   user_data);
 
 void
 on_add_file_button_clicked             (GtkToolButton   *toolbutton,

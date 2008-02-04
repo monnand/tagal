@@ -525,7 +525,7 @@ configure:20581: $? = 0
 configure:20599: result: yes
 configure:20606: checking for _doprnt
 configure:20662: gcc -o conftest -g -O2   conftest.c  >&5
-/tmp/ccs4vXO7.o: In function `main':
+/tmp/cc2ta6uv.o: In function `main':
 /home/monnand/data/project/tagal/conftest.c:64: undefined reference to `_doprnt'
 collect2: ld returned 1 exit status
 configure:20668: $? = 1

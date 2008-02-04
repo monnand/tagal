@@ -15,6 +15,14 @@
 #include "format_search_str.h"
 #include <string.h>
 
+gboolean
+on_search_wnd_delete_event (GtkWidget *widget,
+					GdkEvent  *event,
+				       	gpointer   user_data)
+{
+	exit(0);
+}
+
 void
 on_add_file_button_clicked             (GtkToolButton   *toolbutton,
                                         gpointer         user_data)
