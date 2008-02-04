@@ -611,6 +611,12 @@ distclean:	clean
 	rm -f config.log config.status libtool Makefile config.h sqlite3.pc
 
 #
+# TODO: for tagal. I want to dist-bzip2
+#
+distdir:
+	echo ...
+
+#
 # Windows section
 #
 dll: sqlite3.dll
