@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
+<!--*- mode: xml -*-->
+<glade-interface>
+  <widget class="GtkWindow" id="search_wnd">
+    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+    <property name="title" translatable="yes">Tagal</property>
+    <property name="default_width">500</property>
+    <property name="default_height">400</property>
+    <child>
+      <widget class="GtkVBox" id="vbox1">
+        <property name="visible">True</property>
+        <child>
+          <widget class="GtkToolbar" id="toolbar1">
+            <property name="visible">True</property>
+            <property name="toolbar_style">GTK_TOOLBAR_BOTH</property>
+            <child>
+              <widget class="GtkToolButton" id="add_file_button">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">Add File</property>
+                <property name="use_underline">True</property>
+                <property name="stock_id">gtk-new</property>
+                <signal name="clicked" handler="on_add_file_button_clicked"/>
+              </widget>
+              <packing>
+                <property name="expand">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="GtkToolButton" id="connect_button">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">Connect</property>
+                <property name="use_underline">True</property>
+                <property name="stock_id">gtk-connect</property>
+                <signal name="clicked" handler="on_connect_button_clicked"/>
+              </widget>
+              <packing>
+                <property name="expand">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="GtkToolButton" id="disconnect_button">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">Disconnect</property>
+                <property name="use_underline">True</property>
+                <property name="stock_id">gtk-disconnect</property>
+                <signal name="clicked" handler="on_disconnect_button_clicked"/>
+              </widget>
+              <packing>
+                <property name="expand">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="GtkSeparatorToolItem" id="toolbutton1">
+                <property name="visible">True</property>
+              </widget>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="GtkToolButton" id="config_button">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">Config</property>
+                <property name="use_underline">True</property>
+                <property name="stock_id">gtk-preferences</property>
+                <signal name="clicked" handler="on_config_button_clicked"/>
+              </widget>
+              <packing>
+                <property name="expand">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="GtkSeparatorToolItem" id="toolbutton2">
+                <property name="visible">True</property>
+              </widget>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="GtkToolButton" id="help_button">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">Help</property>
+                <property name="use_underline">True</property>
+                <property name="stock_id">gtk-help</property>
+                <signal name="clicked" handler="on_help_button_clicked"/>
+              </widget>
+              <packing>
+                <property name="expand">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="GtkToolButton" id="about_button">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">About</property>
+                <property name="use_underline">True</property>
+                <property name="stock_id">gtk-about</property>
+                <signal name="clicked" handler="on_about_button_clicked"/>
+              </widget>
+              <packing>
+                <property name="expand">False</property>
+              </packing>
+            </child>
+          </widget>
+          <packing>
+            <property name="expand">False</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkVPaned" id="vpaned1">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="position">54</property>
+            <child>
+              <widget class="GtkHPaned" id="hpaned2">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="position">346</property>
+                <child>
+                  <widget class="GtkEntry" id="text_input_entry">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                    <property name="activates_default">True</property>
+                  </widget>
+                  <packing>
+                    <property name="resize">False</property>
+                    <property name="shrink">True</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkToolbar" id="toolbar2">
+                    <property name="visible">True</property>
+                    <property name="toolbar_style">GTK_TOOLBAR_BOTH</property>
+                    <child>
+                      <widget class="GtkToolButton" id="search_button">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Search</property>
+                        <property name="use_underline">True</property>
+                        <property name="stock_id">gtk-find</property>
+                        <signal name="clicked" handler="on_search_button_clicked"/>
+                      </widget>
+                      <packing>
+                        <property name="expand">False</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="GtkToolButton" id="clear_button">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Clear</property>
+                        <property name="use_underline">True</property>
+                        <property name="stock_id">gtk-clear</property>
+                        <signal name="clicked" handler="on_clear_button_clicked"/>
+                      </widget>
+                      <packing>
+                        <property name="expand">False</property>
+                      </packing>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="resize">True</property>
+                    <property name="shrink">True</property>
+                  </packing>
+                </child>
+              </widget>
+              <packing>
+                <property name="resize">False</property>
+                <property name="shrink">True</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="GtkHPaned" id="hpaned1">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="position">260</property>
+                <child>
+                  <widget class="GtkVPaned" id="vpaned2">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="position">28</property>
+                    <child>
+                      <widget class="GtkLabel" id="files_tree_label">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">All Files</property>
+                      </widget>
+                      <packing>
+                        <property name="resize">False</property>
+                        <property name="shrink">True</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="GtkScrolledWindow" id="scrolledwindow1">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <child>
+                          <widget class="GtkTreeView" id="files_tree">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK | GDK_KEY_PRESS_MASK | GDK_KEY_RELEASE_MASK</property>
+                            <property name="reorderable">True</property>
+                            <signal name="select_cursor_row" handler="on_files_tree_select_cursor_row"/>
+                            <signal name="key_press_event" handler="on_files_tree_key_press_event"/>
+                            <signal name="row_activated" handler="on_files_tree_row_activated"/>
+                            <signal name="button_release_event" handler="on_files_tree_button_release_event"/>
+                            <signal name="key_release_event" handler="on_files_tree_key_release_event"/>
+                          </widget>
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="resize">True</property>
+                        <property name="shrink">True</property>
+                      </packing>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="resize">False</property>
+                    <property name="shrink">True</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkVPaned" id="vpaned3">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="position">28</property>
+                    <child>
+                      <widget class="GtkLabel" id="tags_tree_label">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">All Tags</property>
+                      </widget>
+                      <packing>
+                        <property name="resize">False</property>
+                        <property name="shrink">True</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="GtkScrolledWindow" id="scrolledwindow2">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <child>
+                          <widget class="GtkTreeView" id="tags_tree">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK | GDK_KEY_PRESS_MASK | GDK_KEY_RELEASE_MASK</property>
+                            <property name="reorderable">True</property>
+                            <signal name="select_cursor_row" handler="on_tags_tree_select_cursor_row"/>
+                            <signal name="key_press_event" handler="on_tags_tree_key_press_event"/>
+                            <signal name="row_activated" handler="on_tags_tree_row_activated"/>
+                            <signal name="button_release_event" handler="on_tags_tree_button_release_event"/>
+                            <signal name="key_release_event" handler="on_tags_tree_key_release_event"/>
+                          </widget>
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="resize">True</property>
+                        <property name="shrink">True</property>
+                      </packing>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="resize">True</property>
+                    <property name="shrink">True</property>
+                  </packing>
+                </child>
+              </widget>
+              <packing>
+                <property name="resize">True</property>
+                <property name="shrink">True</property>
+              </packing>
+            </child>
+          </widget>
+          <packing>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </widget>
+    </child>
+  </widget>
+  <widget class="GtkMenu" id="file_item_menu">
+    <property name="visible">True</property>
+    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+    <child>
+      <widget class="GtkImageMenuItem" id="open_file">
+        <property name="visible">True</property>
+        <property name="label" translatable="yes">Open</property>
+        <property name="use_underline">True</property>
+        <signal name="activate" handler="on_open_file_activate"/>
+        <child internal-child="image">
+          <widget class="GtkImage" id="menu-item-image2">
+            <property name="stock">gtk-open</property>
+          </widget>
+        </child>
+      </widget>
+    </child>
+    <child>
+      <widget class="GtkImageMenuItem" id="add_tags_to_file">
+        <property name="visible">True</property>
+        <property name="label" translatable="yes">Add Tags</property>
+        <property name="use_underline">True</property>
+        <signal name="activate" handler="on_add_tags_to_file_activate"/>
+        <signal name="activate" handler="on_add_tags_to_file_activate"/>
+        <child internal-child="image">
+          <widget class="GtkImage" id="menu-item-image8">
+            <property name="visible">True</property>
+            <property name="stock">gtk-add</property>
+          </widget>
+        </child>
+      </widget>
+    </child>
+    <child>
+      <widget class="GtkImageMenuItem" id="del_file">
+        <property name="visible">True</property>
+        <property name="label" translatable="yes">Delete</property>
+        <property name="use_underline">True</property>
+        <signal name="activate" handler="on_del_file_activate"/>
+        <child internal-child="image">
+          <widget class="GtkImage" id="menu-item-image3">
+            <property name="stock">gtk-delete</property>
+          </widget>
+        </child>
+      </widget>
+    </child>
+  </widget>
+  <widget class="GtkMenu" id="tag_item_menu">
+    <property name="visible">True</property>
+    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+    <child>
+      <widget class="GtkImageMenuItem" id="tag_search">
+        <property name="visible">True</property>
+        <property name="label" translatable="yes">Search</property>
+        <property name="use_underline">True</property>
+        <signal name="activate" handler="on_tag_search_activate"/>
+        <child internal-child="image">
+          <widget class="GtkImage" id="menu-item-image4">
+            <property name="visible">True</property>
+            <property name="stock">gtk-index</property>
+          </widget>
+        </child>
+      </widget>
+    </child>
+    <child>
+      <widget class="GtkImageMenuItem" id="add_files_to_tag">
+        <property name="visible">True</property>
+        <property name="label" translatable="yes">Add Files</property>
+        <property name="use_underline">True</property>
+        <signal name="activate" handler="on_add_files_to_tag_activate"/>
+        <child internal-child="image">
+          <widget class="GtkImage" id="menu-item-image7">
+            <property name="visible">True</property>
+            <property name="stock">gtk-add</property>
+          </widget>
+        </child>
+      </widget>
+    </child>
+    <child>
+      <widget class="GtkImageMenuItem" id="tag_del">
+        <property name="visible">True</property>
+        <property name="label" translatable="yes">Delete</property>
+        <property name="use_underline">True</property>
+        <signal name="activate" handler="on_tag_del_activate"/>
+        <child internal-child="image">
+          <widget class="GtkImage" id="menu-item-image5">
+            <property name="visible">True</property>
+            <property name="stock">gtk-delete</property>
+          </widget>
+        </child>
+      </widget>
+    </child>
+  </widget>
+  <widget class="GtkAboutDialog" id="tagal_about_dialog">
+    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+    <property name="border_width">5</property>
+    <property name="type_hint">GDK_WINDOW_TYPE_HINT_NORMAL</property>
+    <property name="copyright" translatable="yes">Copyright (c) 2008 Deng Nan.</property>
+    <property name="comments" translatable="yes">A little tool used to tag your files.</property>
+    <property name="license" translatable="yes">Tagal is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+Tagal is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</property>
+    <property name="authors">Monnand &lt;monnand@gmail.com&gt;</property>
+    <property name="translator_credits" translatable="yes" comments="TRANSLATORS: Replace this string with your names, one name per line.">translator-credits</property>
+    <property name="wrap_license">True</property>
+    <child internal-child="vbox">
+      <widget class="GtkVBox" id="dialog-vbox1">
+        <property name="visible">True</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <widget class="GtkHButtonBox" id="dialog-action_area1">
+          </widget>
+          <packing>
+            <property name="expand">False</property>
+            <property name="pack_type">GTK_PACK_END</property>
+          </packing>
+        </child>
+      </widget>
+    </child>
+  </widget>
+</glade-interface>

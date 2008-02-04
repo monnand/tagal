@@ -1,0 +1,159 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-02-04 17:13+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/add_files_wnd_if.c:39
+msgid "Add Files"
+msgstr ""
+
+#: src/add_tags_to_file_wnd_if.c:91
+msgid "Add"
+msgstr ""
+
+#: src/add_tags_to_file_wnd_if.c:97
+msgid "Cancel"
+msgstr ""
+
+#: src/add_tags_to_file_wnd_if.c:119
+msgid "Show Tags"
+msgstr ""
+
+#: src/main_wnd_if.c:72 src/main_wnd_if.c:511
+msgid "Tagal"
+msgstr ""
+
+#: src/main_wnd_if.c:87
+msgid "Add File"
+msgstr ""
+
+#: src/main_wnd_if.c:101
+msgid "Connect"
+msgstr ""
+
+#: src/main_wnd_if.c:107
+msgid "Disconnect"
+msgstr ""
+
+#: src/main_wnd_if.c:117
+msgid "Config"
+msgstr ""
+
+#: src/main_wnd_if.c:127
+msgid "Help"
+msgstr ""
+
+#: src/main_wnd_if.c:133
+msgid "About"
+msgstr ""
+
+#: src/main_wnd_if.c:162
+msgid "Search"
+msgstr ""
+
+#: src/main_wnd_if.c:168
+msgid "Clear"
+msgstr ""
+
+#: src/main_wnd_if.c:182
+msgid "All Files"
+msgstr ""
+
+#: src/main_wnd_if.c:201
+msgid "All Tags"
+msgstr ""
+
+#: src/main_wnd_if.c:224
+msgid "Input tags"
+msgstr ""
+
+#: src/main_wnd_if.c:341
+msgid "Open"
+msgstr ""
+
+#: src/main_wnd_if.c:348
+msgid "Add Tags"
+msgstr ""
+
+#.
+#. file_show_tags = gtk_image_menu_item_new_with_mnemonic (_("Tags"));
+#. gtk_widget_show (file_show_tags);
+#. gtk_container_add (GTK_CONTAINER (file_item_menu), file_show_tags);
+#.
+#. menu_item_image6 = gtk_image_new_from_stock ("gtk-index", GTK_ICON_SIZE_BUTTON);
+#. gtk_widget_show (menu_item_image6);
+#. gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (file_show_tags), menu_item_image6);
+#.
+#. file_details = gtk_image_menu_item_new_with_mnemonic (_("Details"));
+#. gtk_widget_show (file_details);
+#. gtk_container_add (GTK_CONTAINER (file_item_menu), file_details);
+#.
+#. menu_item_image1 = gtk_image_new_from_stock ("gtk-properties", GTK_ICON_SIZE_BUTTON);
+#. gtk_widget_show (menu_item_image1);
+#. gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (file_details), menu_item_image1);
+#.
+#.
+#. tag_search = gtk_image_menu_item_new_with_mnemonic (_("Search"));
+#. gtk_widget_show (tag_search);
+#. gtk_container_add (GTK_CONTAINER (tag_item_menu), tag_search);
+#.
+#. menu_item_image4 = gtk_image_new_from_stock ("gtk-index", GTK_ICON_SIZE_BUTTON);
+#. gtk_widget_show (menu_item_image4);
+#. gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (tag_search), menu_item_image4);
+#.
+#. add_files_to_tag = gtk_image_menu_item_new_with_mnemonic (_("Add Files"));
+#. gtk_widget_show (add_files_to_tag);
+#. gtk_container_add (GTK_CONTAINER (tag_item_menu), add_files_to_tag);
+#.
+#. menu_item_image7 = gtk_image_new_from_stock ("gtk-add", GTK_ICON_SIZE_BUTTON);
+#. gtk_widget_show (menu_item_image7);
+#. gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (add_files_to_tag), menu_item_image7);
+#.
+#: src/main_wnd_if.c:374 src/main_wnd_if.c:456
+msgid "Delete"
+msgstr ""
+
+#. TRANSLATORS: Replace this string with your names, one name per line.
+#: src/main_wnd_if.c:504
+msgid "translator-credits"
+msgstr ""
+
+#: src/main_wnd_if.c:512
+msgid "Copyright (c) 2008 Deng Nan."
+msgstr ""
+
+#: src/main_wnd_if.c:513
+msgid "A little tool used to tag your files."
+msgstr ""
+
+#: src/main_wnd_if.c:514
+msgid ""
+"Tagal is free software: you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation, either version 3 of the License, or\n"
+"(at your option) any later version.\n"
+"Tagal is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details.\n"
+"You should have received a copy of the GNU General Public License\n"
+"along with this program.  If not, see <http://www.gnu.org/licenses/>."
+msgstr ""
+
+#: src/support.c:90 src/support.c:114
+#, c-format
+msgid "Couldn't find pixmap file: %s"
+msgstr ""

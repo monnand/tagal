@@ -1,0 +1,17 @@
+# List of source files containing translatable strings.
+
+src/add_files_wnd_cb.c
+src/add_files_wnd_if.c
+src/add_tags_to_file_wnd_cb.c
+src/add_tags_to_file_wnd_if.c
+src/config_interface.c
+src/files_list.c
+src/files_list_view.c
+src/format_search_str.c
+src/main.c
+src/main_wnd_cb.c
+src/main_wnd_if.c
+src/support.c
+src/tags_list.c
+src/tags_list_view.c
+

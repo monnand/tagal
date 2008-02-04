@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
+<!--*- mode: xml -*-->
+<glade-interface>
+  <widget class="GtkWindow" id="add_tags_to_file_wnd">
+    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+    <property name="default_width">446</property>
+    <property name="default_height">100</property>
+    <property name="destroy_with_parent">True</property>
+    <property name="skip_taskbar_hint">True</property>
+    <property name="skip_pager_hint">True</property>
+    <signal name="delete_event" handler="on_add_tags_to_file_wnd_delete_event"/>
+    <child>
+      <widget class="GtkVPaned" id="vpaned1">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+        <property name="position">70</property>
+        <child>
+          <widget class="GtkHPaned" id="hpaned3">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="position">313</property>
+            <child>
+              <widget class="GtkVBox" id="vbox4">
+                <property name="visible">True</property>
+                <child>
+                  <widget class="GtkEntry" id="add_tags_to_file_entry">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                    <property name="activates_default">True</property>
+                  </widget>
+                </child>
+                <child>
+                  <widget class="GtkLabel" id="add_tags_to_file_label">
+                    <property name="visible">True</property>
+                  </widget>
+                  <packing>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+              </widget>
+              <packing>
+                <property name="resize">False</property>
+                <property name="shrink">True</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="GtkToolbar" id="toolbar3">
+                <property name="visible">True</property>
+                <property name="toolbar_style">GTK_TOOLBAR_BOTH</property>
+                <child>
+                  <widget class="GtkToolButton" id="add_tags_to_file_confirm">
+                    <property name="visible">True</property>
+                    <property name="label" translatable="yes">Add</property>
+                    <property name="use_underline">True</property>
+                    <property name="stock_id">gtk-ok</property>
+                    <signal name="clicked" handler="on_add_tags_to_file_confirm_clicked"/>
+                  </widget>
+                  <packing>
+                    <property name="expand">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkToolButton" id="add_tags_to_file_cancel">
+                    <property name="visible">True</property>
+                    <property name="label" translatable="yes">Cancel</property>
+                    <property name="use_underline">True</property>
+                    <property name="stock_id">gtk-cancel</property>
+                    <signal name="clicked" handler="on_add_tags_to_file_cancel_clicked"/>
+                    <signal name="clicked" handler="on_add_tags_to_file_cancel_clicked"/>
+                  </widget>
+                  <packing>
+                    <property name="expand">False</property>
+                  </packing>
+                </child>
+              </widget>
+              <packing>
+                <property name="resize">True</property>
+                <property name="shrink">True</property>
+              </packing>
+            </child>
+          </widget>
+          <packing>
+            <property name="resize">False</property>
+            <property name="shrink">True</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkExpander" id="expander1">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <child>
+              <widget class="GtkScrolledWindow" id="scrolledwindow3">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="hscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
+                <property name="vscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
+                <child>
+                  <widget class="GtkTreeView" id="add_tags_to_file_tags_tree">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                    <signal name="button_release_event" handler="on_add_tags_to_file_tags_tree_button_release_event"/>
+                  </widget>
+                </child>
+              </widget>
+            </child>
+            <child>
+              <widget class="GtkLabel" id="label3">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">Show Tags</property>
+              </widget>
+              <packing>
+                <property name="type">label_item</property>
+              </packing>
+            </child>
+          </widget>
+          <packing>
+            <property name="resize">True</property>
+            <property name="shrink">True</property>
+          </packing>
+        </child>
+      </widget>
+    </child>
+  </widget>
+</glade-interface>
