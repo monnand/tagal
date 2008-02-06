@@ -12,7 +12,11 @@
 
 #include "interface.h"
 #include "support.h"
-#include "global_var.h"
+#include "gtktagal_global.h"
+#include "config_interface.h"
+
+tagal_t *tagal_handler;
+gtktagal_config_t *config_handler;
 
 static int gtktagal_init(const char *dir)
 {

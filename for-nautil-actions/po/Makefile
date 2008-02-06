@@ -69,7 +69,7 @@ POTFILES = \
 	../src/main.c \
 	../src/support.c \
 	../src/tags_list.c \
-	../src/tags_list_view.c 
+	../src/tags_list_view.c \
 
 CATALOGS = 
 CATOBJEXT = .gmo
