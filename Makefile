@@ -173,12 +173,12 @@ psdir = ${docdir}
 sbindir = ${exec_prefix}/sbin
 sharedstatedir = ${prefix}/com
 srcdir = .
-subdirs =  sqlite gtk-tagal for-nautil-actions
+subdirs =  sqlite gtk-tagal for-nautilus-actions
 sysconfdir = ${prefix}/etc
 target_alias = 
 top_builddir = .
 top_srcdir = .
-SUBDIRS = sqlite src gtk-tagal for-nautil-actions
+SUBDIRS = sqlite src gtk-tagal for-nautilus-actions
 all: all-recursive
 
 .SUFFIXES:

@@ -525,7 +525,7 @@ configure:20582: $? = 0
 configure:20600: result: yes
 configure:20607: checking for _doprnt
 configure:20663: gcc -o conftest -g -O2   conftest.c  >&5
-/tmp/cc4tXlvE.o: In function `main':
+/tmp/cc4lTOhu.o: In function `main':
 /home/monnand/data/project/tagal/conftest.c:64: undefined reference to `_doprnt'
 collect2: ld returned 1 exit status
 configure:20669: $? = 1
@@ -658,7 +658,7 @@ configure:22269: === configuring in sqlite (/home/monnand/data/project/tagal/sql
 configure:22372: running /bin/bash ./configure '--prefix=/usr/local'  --cache-file=/dev/null --srcdir=.
 configure:22269: === configuring in gtk-tagal (/home/monnand/data/project/tagal/gtk-tagal)
 configure:22372: running /bin/bash ./configure '--prefix=/usr/local'  --cache-file=/dev/null --srcdir=.
-configure:22269: === configuring in for-nautil-actions (/home/monnand/data/project/tagal/for-nautil-actions)
+configure:22269: === configuring in for-nautilus-actions (/home/monnand/data/project/tagal/for-nautilus-actions)
 configure:22372: running /bin/bash ./configure '--prefix=/usr/local'  --cache-file=/dev/null --srcdir=.
 
 ## ---------------- ##
@@ -876,7 +876,7 @@ program_transform_name='s,x,x,'
 psdir='${docdir}'
 sbindir='${exec_prefix}/sbin'
 sharedstatedir='${prefix}/com'
-subdirs=' sqlite gtk-tagal for-nautil-actions'
+subdirs=' sqlite gtk-tagal for-nautilus-actions'
 sysconfdir='${prefix}/etc'
 target_alias=''
 
