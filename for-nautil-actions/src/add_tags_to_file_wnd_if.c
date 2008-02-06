@@ -50,6 +50,7 @@ create_add_tags_to_file_wnd (add_tags_to_file_wnd_arg_t *arg)
 
   add_tags_to_file_wnd = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_widget_set_events (add_tags_to_file_wnd, GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK);
+  gtk_window_set_title (GTK_WINDOW (add_tags_to_file_wnd), arg->path);
   gtk_window_set_default_size (GTK_WINDOW (add_tags_to_file_wnd), 450, 400);
 
   vpaned1 = gtk_vpaned_new ();
