@@ -892,7 +892,7 @@ F77
 FFLAGS'
 ac_subdirs_all='sqlite
 gtk-tagal
-for-nautil-actions'
+for-nautilus-actions'
 
 # Initialize some variables set by options.
 ac_init_help=
@@ -20802,7 +20802,7 @@ subdirs="$subdirs sqlite"
 
 subdirs="$subdirs gtk-tagal"
 
-subdirs="$subdirs for-nautil-actions"
+subdirs="$subdirs for-nautilus-actions"
 
 
 ac_config_files="$ac_config_files Makefile src/Makefile"

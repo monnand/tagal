@@ -31,7 +31,7 @@ AC_CHECK_FUNCS([memmove memset strchr strdup strerror strrchr strstr])
 
 AC_CONFIG_SUBDIRS([sqlite])
 AC_CONFIG_SUBDIRS([gtk-tagal])
-AC_CONFIG_SUBDIRS([for-nautil-actions])
+AC_CONFIG_SUBDIRS([for-nautilus-actions])
 
 AC_CONFIG_FILES([Makefile
                  src/Makefile])

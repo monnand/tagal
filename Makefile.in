@@ -178,7 +178,7 @@ sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-SUBDIRS = sqlite src gtk-tagal for-nautil-actions
+SUBDIRS = sqlite src gtk-tagal for-nautilus-actions
 all: all-recursive
 
 .SUFFIXES:
