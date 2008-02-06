@@ -75,6 +75,7 @@ on_add_files_wnd_confirm_clicked       (GtkButton       *button,
 	if(NULL != add_tags)
 		g_string_free(add_tags, TRUE);
 	gtk_widget_destroy(arg->wnd);
+	refresh_files_view_with_tags(arg->main_arg, "", "");
 	g_free(arg);
 }
 

@@ -8,6 +8,7 @@ typedef struct add_files_wnd_arg_t {
 	GtkWidget *wnd;
 	GtkEntry *entry;
 	tagal_t *tagal;
+	search_main_wnd_arg_t *main_arg;
 } add_files_wnd_arg_t;
 
 gchar *last_accessed_dir;

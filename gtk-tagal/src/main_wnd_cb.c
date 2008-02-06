@@ -34,6 +34,7 @@ on_add_file_button_clicked             (GtkToolButton   *toolbutton,
 	memset(new_arg, 0, sizeof(add_files_wnd_arg_t));
 
 	new_arg->tagal = tagal_handler;
+	new_arg->main_arg = (search_main_wnd_arg_t *)user_data;
 	new_wnd = create_add_files_wnd(new_arg);
 	gtk_widget_show(new_wnd);
 }
