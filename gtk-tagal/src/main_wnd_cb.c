@@ -13,6 +13,7 @@
 #include "files_list_view.h"
 #include "tags_list_view.h"
 #include "format_search_str.h"
+#include "config_interface.h"
 #include <string.h>
 
 gboolean
@@ -275,8 +276,38 @@ on_files_tree_key_release_event        (GtkWidget       *widget,
 	tagal_t *tagal = arg->tagal;
 	GtkTreeModel *file_model = gtk_tree_view_get_model(arg->files_tree);
 	GtkTreeIter tree_iter;
+	GString *all_path;
+	GdkAtom atom = gdk_atom_intern("CLIPBOARD", TRUE);
+	GtkClipboard *b = gtk_clipboard_get(atom);
 
 	switch(event->keyval) {
+	case GDK_c:
+		if(!(event->state | GDK_CONTROL_MASK))
+	       		break;
+		files_selection = 
+			gtk_tree_view_get_selection(arg->files_tree);
+		all_selected_files = 
+			gtk_tree_selection_get_selected_rows(
+				files_selection, NULL);
+		all_path = g_string_sized_new(1024);
+		for(files_iter = g_list_first(all_selected_files);
+			NULL != files_iter; 
+			files_iter = g_list_next(files_iter)) {
+
+			tree_path = (GtkTreePath *)(files_iter->data);
+			gtk_tree_model_get_iter(file_model, &tree_iter, 
+				tree_path);
+			gtk_tree_model_get(file_model, &tree_iter, 1,
+				&file_path, -1);
+			g_string_append(all_path, file_path);
+			g_string_append_c(all_path, '\n');
+			g_free(file_path);
+			gtk_tree_path_free(tree_path);
+		}
+		gtk_clipboard_set_text(b, all_path->str, -1);
+		g_string_free(all_path, TRUE);
+		g_list_free (all_selected_files);
+		break;
 	case GDK_F5:
 		refresh_files_view_with_tags(arg, "", "");
 		break;
@@ -296,9 +327,9 @@ on_files_tree_key_release_event        (GtkWidget       *widget,
 				&file_path, -1);
 			tagal_data_del_by_path(tagal, file_path);
 			gtk_tree_model_row_deleted(file_model, tree_path);
+			gtk_tree_path_free(tree_path);
 			g_free(file_path);
 		}
-		g_list_foreach (all_selected_files, (GFunc)gtk_tree_path_free, NULL);
 		g_list_free (all_selected_files);
 		break;
 	default:
@@ -393,8 +424,42 @@ on_tags_tree_key_release_event         (GtkWidget       *widget,
 	tagal_t *tagal = arg->tagal;
 	GtkTreeModel *tag_model = gtk_tree_view_get_model(arg->tags_tree);
 	GtkTreeIter tree_iter;
+	GdkAtom atom = gdk_atom_intern("CLIPBOARD", TRUE);
+	GtkClipboard *b = gtk_clipboard_get(atom);
+	GString *all_tags;
 
 	switch(event->keyval) {
+	case GDK_c:
+		if(!(event->state | GDK_CONTROL_MASK))
+	       		break;
+		all_tags = g_string_sized_new(1024);
+
+		tags_selection = 
+			gtk_tree_view_get_selection(arg->tags_tree);
+		all_selected_tags = 
+			gtk_tree_selection_get_selected_rows(
+				tags_selection, NULL);
+		for(tags_iter = g_list_first(all_selected_tags);
+			NULL != tags_iter; 
+			tags_iter = g_list_next(tags_iter)) {
+			tree_path = (GtkTreePath *)(tags_iter->data);
+			gtk_tree_model_get_iter(tag_model, &tree_iter, 
+				tree_path);
+			gtk_tree_model_get(tag_model, &tree_iter, 0,
+				&tag, -1);
+
+			g_string_append(all_tags, tag);
+			g_string_append_c(all_tags, '\n');
+
+			gtk_tree_model_row_deleted(tag_model, tree_path);
+			gtk_tree_path_free(tree_path);
+			g_free(tag);
+		}
+		gtk_clipboard_set_text(b, all_tags->str, -1);
+		g_string_free(all_tags, TRUE);
+		g_list_free (all_selected_tags);
+		break;
+
 	case GDK_F5:
 		refresh_tags_view_with_path(arg, "", "");
 		break;
@@ -414,9 +479,9 @@ on_tags_tree_key_release_event         (GtkWidget       *widget,
 				&tag, -1);
 			tagal_tag_del_tag(tagal, tag);
 			gtk_tree_model_row_deleted(tag_model, tree_path);
+			gtk_tree_path_free(tree_path);
 			g_free(tag);
 		}
-		g_list_foreach (all_selected_tags, (GFunc)gtk_tree_path_free, NULL);
 		g_list_free (all_selected_tags);
 		break;
 	default:
@@ -477,11 +542,29 @@ on_open_file_activate                  (GtkMenuItem     *menuitem,
 	main_wnd_menu_arg_t *arg = (main_wnd_menu_arg_t *)user_data;
 	GtkTreeModel *model = arg->model;
 	GtkTreeIter tree_iter;
-	gchar *file_path;
+	gchar *file_path, *file_name;
+	char *argv[3];
+	gchar *need_free;
 
 	gtk_tree_model_get_iter(model, &tree_iter, arg->selected_row);
-	gtk_tree_model_get(model, &tree_iter, 1, &file_path, -1);
+	gtk_tree_model_get(model, &tree_iter, 0, &file_name, 1, &file_path, -1);
+
+	config_file_get_open_file_argv(config_handler, argv, 3, 
+		file_path, file_name, &need_free);
+	g_spawn_async(
+			NULL, /* working directory */ 
+			argv, /* argv */
+			NULL, /* envp */
+			G_SPAWN_SEARCH_PATH, /* flag */
+			NULL, /* child setup */
+			NULL, /* user data for child setup */
+			NULL, /* pid */
+			NULL);
+
+	if(NULL != need_free)
+		g_free(need_free);
 	g_free(file_path);
+	g_free(file_name);
 }
 
 
@@ -507,6 +590,26 @@ on_add_tags_to_file_activate           (GtkMenuItem     *menuitem,
 	wnd_arg->file_path = file_path;
 	new_wnd = create_add_tags_to_file_wnd(wnd_arg);
 	gtk_widget_show (new_wnd);
+}
+
+void
+on_copy_file_path_activate             (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{	main_wnd_menu_arg_t *arg = (main_wnd_menu_arg_t *)user_data;
+	add_tags_to_file_wnd_arg_t *wnd_arg;
+	GtkWidget *new_wnd;
+	GtkTreeModel *model = arg->model;
+	GtkTreeIter tree_iter;
+	gchar *file_path;
+
+	gtk_tree_model_get_iter(model, &tree_iter, arg->selected_row);
+	gtk_tree_model_get(model, &tree_iter, 1, &file_path, -1);
+
+	GdkAtom atom = gdk_atom_intern("CLIPBOARD", TRUE);
+	GtkClipboard *b = gtk_clipboard_get(atom);
+	gtk_clipboard_set_text(b, file_path, -1);
+
+	g_free(file_path);
 }
 
 /*
@@ -569,6 +672,25 @@ on_add_files_to_tag_activate           (GtkMenuItem     *menuitem,
 
 }
 
+void
+on_copy_tag_activate                   (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{	
+	main_wnd_menu_arg_t *arg = (main_wnd_menu_arg_t *)user_data;
+
+	GtkTreeModel *model = arg->model;
+	GtkTreeIter tree_iter;
+	gchar *tag;
+
+	gtk_tree_model_get_iter(model, &tree_iter, arg->selected_row);
+	gtk_tree_model_get(model, &tree_iter, 0, &tag, -1);
+
+	GdkAtom atom = gdk_atom_intern("CLIPBOARD", TRUE);
+	GtkClipboard *b = gtk_clipboard_get(atom);
+	gtk_clipboard_set_text(b, tag, -1);
+
+	g_free(tag);
+}
 
 void
 on_tag_del_activate                    (GtkMenuItem     *menuitem,

@@ -104,6 +104,10 @@ on_open_file_activate                  (GtkMenuItem     *menuitem,
                                         gpointer         user_data);
 
 void
+on_copy_file_path_activate             (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);
+
+void
 on_add_tags_to_file_activate           (GtkMenuItem     *menuitem,
                                         gpointer         user_data);
 
@@ -128,6 +132,11 @@ on_tag_search_activate                 (GtkMenuItem     *menuitem,
 void
 on_add_files_to_tag_activate           (GtkMenuItem     *menuitem,
                                         gpointer         user_data);
+
+void
+on_copy_tag_activate                   (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);
+
 
 void
 on_tag_del_activate                    (GtkMenuItem     *menuitem,

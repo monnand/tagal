@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-04 17:13+0800\n"
+"POT-Creation-Date: 2008-02-04 22:00+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,7 +32,7 @@ msgstr ""
 msgid "Show Tags"
 msgstr ""
 
-#: src/main_wnd_if.c:72 src/main_wnd_if.c:511
+#: src/main_wnd_if.c:72 src/main_wnd_if.c:515
 msgid "Tagal"
 msgstr ""
 
@@ -80,11 +80,11 @@ msgstr ""
 msgid "Input tags"
 msgstr ""
 
-#: src/main_wnd_if.c:341
+#: src/main_wnd_if.c:345
 msgid "Open"
 msgstr ""
 
-#: src/main_wnd_if.c:348
+#: src/main_wnd_if.c:352
 msgid "Add Tags"
 msgstr ""
 
@@ -122,24 +122,24 @@ msgstr ""
 #. gtk_widget_show (menu_item_image7);
 #. gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (add_files_to_tag), menu_item_image7);
 #.
-#: src/main_wnd_if.c:374 src/main_wnd_if.c:456
+#: src/main_wnd_if.c:378 src/main_wnd_if.c:460
 msgid "Delete"
 msgstr ""
 
 #. TRANSLATORS: Replace this string with your names, one name per line.
-#: src/main_wnd_if.c:504
+#: src/main_wnd_if.c:508
 msgid "translator-credits"
 msgstr ""
 
-#: src/main_wnd_if.c:512
+#: src/main_wnd_if.c:516
 msgid "Copyright (c) 2008 Deng Nan."
 msgstr ""
 
-#: src/main_wnd_if.c:513
+#: src/main_wnd_if.c:517
 msgid "A little tool used to tag your files."
 msgstr ""
 
-#: src/main_wnd_if.c:514
+#: src/main_wnd_if.c:518
 msgid ""
 "Tagal is free software: you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"

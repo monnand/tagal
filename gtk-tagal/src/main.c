@@ -8,6 +8,7 @@
 #endif
 
 #include <gtk/gtk.h>
+#include <string.h>
 
 #include "interface.h"
 #include "support.h"

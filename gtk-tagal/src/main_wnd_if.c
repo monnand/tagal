@@ -330,6 +330,8 @@ create_file_item_menu (main_wnd_menu_arg_t *arg)
   GtkWidget *file_item_menu;
   GtkWidget *open_file;
   GtkWidget *menu_item_image2;
+  GtkWidget *copy_file_path;
+  GtkWidget *menu_item_image9;
   GtkWidget *add_tags_to_file;
   GtkWidget *menu_item_image8;
   //GtkWidget *file_show_tags;
@@ -342,13 +344,20 @@ create_file_item_menu (main_wnd_menu_arg_t *arg)
   file_item_menu = gtk_menu_new ();
   gtk_widget_set_events (file_item_menu, GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK);
 
-  open_file = gtk_image_menu_item_new_with_mnemonic (_("Open"));
+  open_file = gtk_image_menu_item_new_with_mnemonic (_("Open Directory"));
   gtk_widget_show (open_file);
   gtk_container_add (GTK_CONTAINER (file_item_menu), open_file);
 
   menu_item_image2 = gtk_image_new_from_stock ("gtk-open", GTK_ICON_SIZE_BUTTON);
   gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (open_file), menu_item_image2);
 
+  copy_file_path = gtk_image_menu_item_new_with_mnemonic (_("Copy Path"));
+  gtk_widget_show (copy_file_path);
+  gtk_container_add (GTK_CONTAINER (file_item_menu), copy_file_path);
+
+  menu_item_image9 = gtk_image_new_from_stock ("gtk-copy", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (menu_item_image9);
+  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (copy_file_path), menu_item_image9);
   add_tags_to_file = gtk_image_menu_item_new_with_mnemonic (_("Add Tags"));
   gtk_widget_show (add_tags_to_file);
   gtk_container_add (GTK_CONTAINER (file_item_menu), add_tags_to_file);
@@ -389,6 +398,9 @@ create_file_item_menu (main_wnd_menu_arg_t *arg)
   g_signal_connect ((gpointer) open_file, "activate",
                     G_CALLBACK (on_open_file_activate),
 		    arg);
+  g_signal_connect ((gpointer) copy_file_path, "activate",
+                    G_CALLBACK (on_copy_file_path_activate),
+		    arg);
   g_signal_connect ((gpointer) add_tags_to_file, "activate",
                     G_CALLBACK (on_add_tags_to_file_activate),
 		    arg);
@@ -409,6 +421,8 @@ create_file_item_menu (main_wnd_menu_arg_t *arg)
   GLADE_HOOKUP_OBJECT_NO_REF (file_item_menu, file_item_menu, "file_item_menu");
   GLADE_HOOKUP_OBJECT (file_item_menu, open_file, "open_file");
   GLADE_HOOKUP_OBJECT (file_item_menu, menu_item_image2, "menu_item_image2");
+  GLADE_HOOKUP_OBJECT (file_item_menu, copy_file_path, "copy_file_path");
+  GLADE_HOOKUP_OBJECT (file_item_menu, menu_item_image9, "menu_item_image9");
   GLADE_HOOKUP_OBJECT (file_item_menu, add_tags_to_file, "add_tags_to_file");
   GLADE_HOOKUP_OBJECT (file_item_menu, menu_item_image8, "menu_item_image8");
   /*
@@ -427,6 +441,8 @@ GtkWidget*
 create_tag_item_menu (main_wnd_menu_arg_t *arg)
 {
   GtkWidget *tag_item_menu;
+  GtkWidget *copy_tag;
+  GtkWidget *menu_item_image4;
 /*
   GtkWidget *tag_search;
   GtkWidget *menu_item_image4;
@@ -438,6 +454,14 @@ create_tag_item_menu (main_wnd_menu_arg_t *arg)
 
   tag_item_menu = gtk_menu_new ();
   gtk_widget_set_events (tag_item_menu, GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK);
+
+  copy_tag = gtk_image_menu_item_new_with_mnemonic (_("Copy Tag"));
+  gtk_widget_show (copy_tag);
+  gtk_container_add (GTK_CONTAINER (tag_item_menu), copy_tag);
+
+  menu_item_image4 = gtk_image_new_from_stock ("gtk-copy", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (menu_item_image4);
+  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (copy_tag), menu_item_image4);
 
   /*
   tag_search = gtk_image_menu_item_new_with_mnemonic (_("Search"));
@@ -469,6 +493,9 @@ create_tag_item_menu (main_wnd_menu_arg_t *arg)
   g_signal_connect ((gpointer) tag_item_menu, "selection-done",
                     G_CALLBACK (menu_reaper),
 		    arg);
+  g_signal_connect ((gpointer) copy_tag, "activate",
+                    G_CALLBACK (on_copy_tag_activate),
+		    arg);
   /*
   g_signal_connect ((gpointer) tag_search, "activate",
                     G_CALLBACK (on_tag_search_activate),
@@ -484,6 +511,8 @@ create_tag_item_menu (main_wnd_menu_arg_t *arg)
 
   /* Store pointers to all widgets, for use by lookup_widget(). */
   GLADE_HOOKUP_OBJECT_NO_REF (tag_item_menu, tag_item_menu, "tag_item_menu");
+  GLADE_HOOKUP_OBJECT (tag_item_menu, copy_tag, "copy_tag");
+  GLADE_HOOKUP_OBJECT (tag_item_menu, menu_item_image4, "menu_item_image4");
   /*
   GLADE_HOOKUP_OBJECT (tag_item_menu, tag_search, "tag_search");
   GLADE_HOOKUP_OBJECT (tag_item_menu, menu_item_image4, "menu_item_image4");
