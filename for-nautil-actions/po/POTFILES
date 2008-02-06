@@ -1,0 +1,10 @@
+	../src/add_tags_to_file_wnd_cb.c \
+	../src/add_tags_to_file_wnd_if.c \
+	../src/add_tags_to_multifiles_wnd_cb.c \
+	../src/add_tags_to_multifiles_wnd_if.c \
+	../src/config_interface.c \
+	../src/format_search_str.c \
+	../src/main.c \
+	../src/support.c \
+	../src/tags_list.c \
+	../src/tags_list_view.c 

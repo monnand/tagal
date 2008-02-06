@@ -452,7 +452,6 @@ on_tags_tree_key_release_event         (GtkWidget       *widget,
 			g_string_append(all_tags, tag);
 			g_string_append_c(all_tags, '\n');
 
-			gtk_tree_model_row_deleted(tag_model, tree_path);
 			gtk_tree_path_free(tree_path);
 			g_free(tag);
 		}

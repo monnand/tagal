@@ -51,9 +51,9 @@ on_add_tags_to_file_confirm_clicked    (GtkToolButton   *toolbutton,
 
 		tagal_data_add_tag_to_path(tagal, file_path, tag_tag);
 		g_free(tag_tag);
+		gtk_tree_path_free(tag);
 	}
 
-	g_list_foreach (all_selected_tags, (GFunc)gtk_tree_path_free, NULL);
 	g_list_free (all_selected_tags);
 
 	GString *ftags = format_search_str(

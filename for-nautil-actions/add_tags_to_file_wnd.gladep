@@ -1,0 +1,10 @@
+<?xml version="1.0" standalone="no"?> <!--*- mode: xml -*-->
+<!DOCTYPE glade-project SYSTEM "http://glade.gnome.org/glade-project-2.0.dtd">
+
+<glade-project>
+  <name>tagal-add-tags</name>
+  <program_name>tagal-add-tags</program_name>
+  <gnome_support>FALSE</gnome_support>
+  <main_source_file>add_tags_to_file_wnd_if.c</main_source_file>
+  <handler_source_file>add_tags_to_file_wnd_cb.c</handler_source_file>
+</glade-project>
