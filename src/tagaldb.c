@@ -33,7 +33,7 @@ int tagaldb_select_by_tags(libtagal_db_t *db,
 	}
 	memset(sql_ptr, 0, max_len);
 
-	max_len -= 20;
+	max_len -= 50;
 
 	len = 0;
 	
@@ -92,7 +92,7 @@ int tagaldb_select_by_tags(libtagal_db_t *db,
 	} while(NULL != end);
 	if(len >= max_len - 1)
 		return TAGALDB_TOOMUCH_TAGS;
-	snprintf(sql_ptr + len, 20, "))=%d order by f.name;", nr_tags);
+	snprintf(sql_ptr + len, 50, "))=%d order by f.name;", nr_tags);
 
 	TRACE(("ready to exec sql: %s", sql_ptr));
 
