@@ -10,6 +10,7 @@
 #include "support.h"
 #include "format_search_str.h"
 #include <stdlib.h>
+#include <string.h>
 
 gboolean
 on_add_tags_to_file_wnd_delete_event   (GtkWidget       *widget,
@@ -43,6 +44,7 @@ on_add_tags_to_file_confirm_clicked    (GtkButton       *button,
 	GList *tags_iter = NULL;
 	GtkTreePath *tag = NULL;
 	gchar *tag_tag = NULL;
+	GString *ftags;
 
 	tagal_add_data(tagal, file_path, file_path + strlen(base_dir) + 1);
 
@@ -53,16 +55,19 @@ on_add_tags_to_file_confirm_clicked    (GtkButton       *button,
 		gtk_tree_model_get(tag_model, &tree_iter, 0, &tag_tag, -1);
 
 		tagal_data_add_tag_to_path(tagal, file_path, tag_tag);
-		g_print("add %s to %s\n", tag_tag, file_path);
+		//g_print("add %s to %s\n", tag_tag, file_path);
 		g_free(tag_tag);
 		gtk_tree_path_free(tag);
 	}
 	g_list_free (all_selected_tags);
 
-	GString *ftags = format_search_str(
-			gtk_entry_get_text(arg->input_entry));
-	tagal_data_add_tags_to_path(tagal, file_path, ftags->str);
-	g_string_free(ftags, TRUE);
+	base_dir = gtk_entry_get_text(arg->input_entry);
+	for(;strchr(" \t\n\r", *base_dir) && 0 != *base_dir; base_dir++);
+	if(*base_dir) {
+		ftags = format_search_str(base_dir);
+		tagal_data_add_tags_to_path(tagal, file_path, ftags->str);
+		g_string_free(ftags, TRUE);
+	}
 	gtk_widget_destroy(arg->wnd);
 	if(arg->exit_on_delete)
 		exit(0);

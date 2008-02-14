@@ -14,7 +14,7 @@ hostname = monnand-laptop
 uname -m = i686
 uname -r = 2.6.22-14-generic
 uname -s = Linux
-uname -v = #1 SMP Fri Feb 1 04:59:50 UTC 2008
+uname -v = #1 SMP Tue Feb 12 07:42:25 UTC 2008
 
 /usr/bin/uname -p = unknown
 /bin/uname -X     = unknown
@@ -525,7 +525,7 @@ configure:20582: $? = 0
 configure:20600: result: yes
 configure:20607: checking for _doprnt
 configure:20663: gcc -o conftest -g -O2   conftest.c  >&5
-/tmp/cc4lTOhu.o: In function `main':
+/tmp/ccI7m6nO.o: In function `main':
 /home/monnand/data/project/tagal/conftest.c:64: undefined reference to `_doprnt'
 collect2: ld returned 1 exit status
 configure:20669: $? = 1

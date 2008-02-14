@@ -92,7 +92,7 @@ int tagaldb_select_by_tags(libtagal_db_t *db,
 	} while(NULL != end);
 	if(len >= max_len - 1)
 		return TAGALDB_TOOMUCH_TAGS;
-	snprintf(sql_ptr + len, 20, "))=%d;", nr_tags);
+	snprintf(sql_ptr + len, 20, "))=%d order by f.name;", nr_tags);
 
 	TRACE(("ready to exec sql: %s", sql_ptr));
 
@@ -125,7 +125,7 @@ int tagaldb_select_by_path(libtagal_db_t *db,
 	}
 
 	snprintf(sql_ptr, max_len, 
-		"select id, name, path from files where path = '%s'", path);
+		"select id, name, path from files where path='%s'", path);
 	if(max_len = libtagal_db_exec_result(db, result, sql_ptr)) {
 		if(sql_ptr != sql)
 			mempool_free(db->pool, sql_ptr);
@@ -168,7 +168,8 @@ int tagaldb_get_tags_by_path(libtagal_db_t *db,
 	char sql[1024];
 	snprintf(sql, sizeof(sql), "select m.tid,t.tag "
 		"from tag_file_map as m, tags as t, files as f "
-		"where m.tid=t.id and m.fid=f.id and f.path='%s';", path);
+		"where m.tid=t.id and m.fid=f.id and f.path='%s' "
+		"order by t.tag;", path);
 	TRACE(("ready to exec sql: %s", sql));
 	return libtagal_db_exec_result(db, result, sql);
 }
@@ -526,11 +527,11 @@ int tagaldb_repath(libtagal_db_t *db, const int id, const char *path)
 int tagaldb_get_all_tags(libtagal_db_t *db, libtagal_db_result_t *result)
 {
 	return libtagal_db_exec_result(db, result, 
-		"select id, tag from tags;");
+		"select id, tag from tags order by tag;");
 }
 
 int tagaldb_get_all_files(libtagal_db_t *db, libtagal_db_result_t *result)
 {
 	return libtagal_db_exec_result(db, result, 
-		"select id, name, path from files;");
+		"select id, name, path from files order by name;");
 }

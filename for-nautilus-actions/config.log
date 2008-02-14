@@ -14,7 +14,7 @@ hostname = monnand-laptop
 uname -m = i686
 uname -r = 2.6.22-14-generic
 uname -s = Linux
-uname -v = #1 SMP Fri Feb 1 04:59:50 UTC 2008
+uname -v = #1 SMP Tue Feb 12 07:42:25 UTC 2008
 
 /usr/bin/uname -p = unknown
 /bin/uname -X     = unknown

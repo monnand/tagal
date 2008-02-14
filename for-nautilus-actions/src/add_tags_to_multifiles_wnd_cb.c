@@ -10,7 +10,7 @@
 #include "support.h"
 
 #include <stdlib.h>
-
+#include <string.h>
 
 gboolean
 on_add_tags_to_multifiles_wnd_delete_event
@@ -50,8 +50,16 @@ on_add_tags_to_multfile_confirm_clicked
 	GtkTreePath *tag = NULL;
 	gchar *tag_tag = NULL;
 
-	GString *ftags = format_search_str(
-			gtk_entry_get_text(arg->input_entry));
+	const gchar *input_str;
+	GString *ftags;
+
+	input_str = gtk_entry_get_text(arg->input_entry);
+	for(;strchr(" \t\n\r", *input_str) && 0 != *input_str; input_str++);
+	if(*input_str) {
+       		ftags= format_search_str(input_str);
+	} else {
+		ftags = NULL;
+	}
 
 	for(i = 0; i < arg->nr_path; i++) {
 		file_path = path_ptr[i];
@@ -66,11 +74,13 @@ on_add_tags_to_multfile_confirm_clicked
 			tagal_data_add_tag_to_path(tagal, file_path, tag_tag);
 			g_free(tag_tag);
 		}
-		tagal_data_add_tags_to_path(tagal, file_path, ftags->str);
+		if(NULL != ftags)
+			tagal_data_add_tags_to_path(tagal, file_path, ftags->str);
 	}
 	g_list_foreach(all_selected_tags, (GFunc)gtk_tree_path_free, NULL);
 	g_list_free (all_selected_tags);
-	g_string_free(ftags, TRUE);
+	if(NULL != ftags)
+		g_string_free(ftags, TRUE);
 	gtk_widget_destroy(arg->wnd);
 	if(arg->exit_on_delete)
 		exit(0);
