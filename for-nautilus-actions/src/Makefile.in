@@ -55,7 +55,7 @@ am_tagal_add_tags_OBJECTS = main.$(OBJEXT) support.$(OBJEXT) \
 tagal_add_tags_OBJECTS = $(am_tagal_add_tags_OBJECTS)
 am__DEPENDENCIES_1 =
 tagal_add_tags_DEPENDENCIES = $(am__DEPENDENCIES_1) \
-	$(top_srcdir)/../src/libtagal.a \
+	$(top_srcdir)/../libtagal/libtagal.a \
 	$(top_srcdir)/../sqlite/libsqlite3.la
 DEFAULT_INCLUDES = -I. -I$(top_builddir)@am__isrc@
 depcomp = $(SHELL) $(top_srcdir)/../depcomp
@@ -204,7 +204,6 @@ top_srcdir = @top_srcdir@
 INCLUDES = \
 	-DPACKAGE_DATA_DIR=\""$(datadir)"\" \
 	-DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
-	$(top_srcdir)/../src/	\
 	@PACKAGE_CFLAGS@
 
 tagal_add_tags_SOURCES = \
@@ -223,9 +222,10 @@ tagal_add_tags_SOURCES = \
 	add_tags_to_file_wnd_cb.h add_tags_to_file_wnd_cb.c
 
 tagal_add_tags_LDADD = @PACKAGE_LIBS@ $(INTLLIBS)	\
-		  $(top_srcdir)/../src/libtagal.a	\
+		  $(top_srcdir)/../libtagal/libtagal.a	\
 		  $(top_srcdir)/../sqlite/libsqlite3.la
 
+AM_CPPFLAGS = -I$(top_srcdir)/../libtagal/
 all: all-am
 
 .SUFFIXES:

@@ -24,7 +24,7 @@ static int gtktagal_init(const char *dir)
 	config_file_open(&config_handler, dir);
 
 	tagal_new(&tagal_handler, libtagal_sqlite, 
-		config_file_get_dbstr(config_handler), NULL);
+		config_file_get_dbstr(config_handler), 1, NULL);
 
 	tagal_data_iter_new(tagal_handler, &data);
 	tagal_tag_iter_new(tagal_handler, &tags);
@@ -51,7 +51,7 @@ main(int argc, char *argv[], char *env[])
   GtkWidget *search_wnd;
   GtkWidget *file_properties_wnd;
 
-  char *dir;
+  char *dir = NULL;
   int i;
   for(i = 0; NULL != env[i]; i++) {
 	  if(!strncmp(env[i], "HOME", 4)) {

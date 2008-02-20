@@ -334,6 +334,8 @@ create_file_item_menu (main_wnd_menu_arg_t *arg)
   GtkWidget *menu_item_image9;
   GtkWidget *add_tags_to_file;
   GtkWidget *menu_item_image8;
+  GtkWidget *file_open_dir;
+  GtkWidget *img_open_dir;
   //GtkWidget *file_show_tags;
   //GtkWidget *menu_item_image6;
   //GtkWidget *file_details;
@@ -344,7 +346,14 @@ create_file_item_menu (main_wnd_menu_arg_t *arg)
   file_item_menu = gtk_menu_new ();
   gtk_widget_set_events (file_item_menu, GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK);
 
-  open_file = gtk_image_menu_item_new_with_mnemonic (_("Open Directory"));
+  file_open_dir = gtk_image_menu_item_new_with_mnemonic (_("Open Directory"));
+  gtk_widget_show (file_open_dir);
+  gtk_container_add (GTK_CONTAINER (file_item_menu), file_open_dir);
+
+  img_open_dir = gtk_image_new_from_stock ("gtk-open", GTK_ICON_SIZE_BUTTON);
+  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (file_open_dir), img_open_dir);
+
+  open_file = gtk_image_menu_item_new_with_mnemonic (_("Open File"));
   gtk_widget_show (open_file);
   gtk_container_add (GTK_CONTAINER (file_item_menu), open_file);
 
@@ -395,6 +404,9 @@ create_file_item_menu (main_wnd_menu_arg_t *arg)
   g_signal_connect ((gpointer) file_item_menu, "selection-done",
                     G_CALLBACK (menu_reaper),
 		    arg);
+  g_signal_connect ((gpointer) file_open_dir, "activate",
+                    G_CALLBACK (on_file_open_dir_activate),
+		    arg);
   g_signal_connect ((gpointer) open_file, "activate",
                     G_CALLBACK (on_open_file_activate),
 		    arg);
@@ -420,6 +432,8 @@ create_file_item_menu (main_wnd_menu_arg_t *arg)
   /* Store pointers to all widgets, for use by lookup_widget(). */
   GLADE_HOOKUP_OBJECT_NO_REF (file_item_menu, file_item_menu, "file_item_menu");
   GLADE_HOOKUP_OBJECT (file_item_menu, open_file, "open_file");
+  GLADE_HOOKUP_OBJECT (file_item_menu, file_open_dir, "file_open_dir");
+  GLADE_HOOKUP_OBJECT (file_item_menu, img_open_dir, "img_open_dir");
   GLADE_HOOKUP_OBJECT (file_item_menu, menu_item_image2, "menu_item_image2");
   GLADE_HOOKUP_OBJECT (file_item_menu, copy_file_path, "copy_file_path");
   GLADE_HOOKUP_OBJECT (file_item_menu, menu_item_image9, "menu_item_image9");

@@ -1,1 +1,1 @@
-SUBDIRS = sqlite src gtk-tagal for-nautilus-actions
+SUBDIRS = sqlite libtagal gtk-tagal for-nautilus-actions

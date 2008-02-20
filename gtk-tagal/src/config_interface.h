@@ -32,8 +32,14 @@ int config_file_get_open_file_argv(gtktagal_config_t *config,
 		const char *out[], int size, 
 		const gchar *file_path, const gchar *file_name,
 		gchar **need_free);
+int config_file_get_open_file_dir_argv(gtktagal_config_t *config, 
+		const char *out[], int size, 
+		const gchar *file_path, const gchar *file_name,
+		gchar **need_free);
+/*
 const char *config_file_get_open_file_cmd(gtktagal_config_t *config, 
 		GString *out, const gchar *file_path, const gchar *file_name);
+*/
 int config_file_set_dbstr(gtktagal_config_t *config, const gchar *str);
 
 #endif /* MONNAND_GTKTAGAL_CONFIG_INTERFACE_H */

@@ -23,7 +23,11 @@ static int gtktagal_init(const char *dir)
 	config_file_open(&config_handler, dir);
 
 	tagal_new(&tagal_handler, libtagal_sqlite, 
-		config_file_get_dbstr(config_handler), NULL);
+		config_file_get_dbstr(config_handler), 1, NULL);
+	/*
+	tagal_new(&tagal_handler, libtagal_sqlite, 
+		config_file_get_dbstr(config_handler), 1, NULL);
+	*/
 	return 0;
 }
 
@@ -31,7 +35,7 @@ int
 main(int argc, char *argv[], char *env[])
 {
   GtkWidget *wnd;
-  char *dir;
+  char *dir = NULL;
   int i;
   for(i = 0; NULL != env[i]; i++) {
 	  if(!strncmp(env[i], "HOME", 4)) {

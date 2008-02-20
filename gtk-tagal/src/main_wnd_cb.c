@@ -567,6 +567,37 @@ on_open_file_activate                  (GtkMenuItem     *menuitem,
 	g_free(file_name);
 }
 
+void
+on_file_open_dir_activate                  (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+	main_wnd_menu_arg_t *arg = (main_wnd_menu_arg_t *)user_data;
+	GtkTreeModel *model = arg->model;
+	GtkTreeIter tree_iter;
+	gchar *file_path, *file_name;
+	char *argv[3];
+	gchar *need_free;
+
+	gtk_tree_model_get_iter(model, &tree_iter, arg->selected_row);
+	gtk_tree_model_get(model, &tree_iter, 0, &file_name, 1, &file_path, -1);
+
+	config_file_get_open_file_dir_argv(config_handler, argv, 3, 
+		file_path, file_name, &need_free);
+	g_spawn_async(
+			NULL, /* working directory */ 
+			argv, /* argv */
+			NULL, /* envp */
+			G_SPAWN_SEARCH_PATH, /* flag */
+			NULL, /* child setup */
+			NULL, /* user data for child setup */
+			NULL, /* pid */
+			NULL);
+
+	if(NULL != need_free)
+		g_free(need_free);
+	g_free(file_path);
+	g_free(file_name);
+}
 
 void
 on_add_tags_to_file_activate           (GtkMenuItem     *menuitem,

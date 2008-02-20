@@ -5,7 +5,7 @@ int config_file_open(gtktagal_config_t **config, const char *dir)
 {
 	*config = (gtktagal_config_t *)g_malloc(sizeof(gtktagal_config_t));
 	(*config)->db_str = g_string_new(dir);
-	g_string_append((*config)->db_str, "/.test.db");
+	g_string_append((*config)->db_str, "/.tagal.db");
 	return 0;
 }
 

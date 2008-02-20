@@ -2,10 +2,10 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.61)
-AC_INIT(tagal, 0.1, monnand@gmail.com)
-AC_CONFIG_SRCDIR([src/error.c])
+AC_INIT(tagal, 0.2a, monnand@gmail.com)
+AC_CONFIG_SRCDIR([libtagal/error.c])
 AM_CONFIG_HEADER([include/config.h])
-AM_INIT_AUTOMAKE(tagal, 0.1)
+AM_INIT_AUTOMAKE(tagal, 0.2a)
 
 # Checks for programs.
 AC_PROG_CC
@@ -34,5 +34,5 @@ AC_CONFIG_SUBDIRS([gtk-tagal])
 AC_CONFIG_SUBDIRS([for-nautilus-actions])
 
 AC_CONFIG_FILES([Makefile
-                 src/Makefile])
+                 libtagal/Makefile])
 AC_OUTPUT

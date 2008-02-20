@@ -3,7 +3,6 @@
 INCLUDES = \
 	-DPACKAGE_DATA_DIR=\""$(datadir)"\" \
 	-DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
-	$(top_srcdir)/../src/	\
 	@PACKAGE_CFLAGS@
 
 bin_PROGRAMS = tagal-add-tags
@@ -24,6 +23,7 @@ tagal_add_tags_SOURCES = \
 	add_tags_to_file_wnd_cb.h add_tags_to_file_wnd_cb.c
 
 tagal_add_tags_LDADD = @PACKAGE_LIBS@ $(INTLLIBS)	\
-		  $(top_srcdir)/../src/libtagal.a	\
+		  $(top_srcdir)/../libtagal/libtagal.a	\
 		  $(top_srcdir)/../sqlite/libsqlite3.la
 
+AM_CPPFLAGS = -I$(top_srcdir)/../libtagal/

@@ -104,6 +104,10 @@ on_open_file_activate                  (GtkMenuItem     *menuitem,
                                         gpointer         user_data);
 
 void
+on_file_open_dir_activate		(GtkMenuItem     *menuitem,
+                                        gpointer         user_data);
+
+void
 on_copy_file_path_activate             (GtkMenuItem     *menuitem,
                                         gpointer         user_data);
 
