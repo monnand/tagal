@@ -21,6 +21,7 @@ int libtagal_sqlite(libtagal_db_t *tagal)
 {
 	tagal->db_init = tagal_db_sqlite_init;
 	tagal->db_sql_exec = tagal_db_sqlite_sql_exec;
+	tagal->db_noresult_sql_exec = tagal_db_sqlite_noresult_sql_exec;
 	tagal->db_result_new = tagal_db_sqlite_result_new;
 	tagal->db_get_result = tagal_db_sqlite_get_result;
 	tagal->db_release = tagal_db_sqlite_release;
@@ -102,6 +103,20 @@ int tagal_db_sqlite_sql_exec(void *lite, const char *sql)
 	}
 	TRACE(("ready to exec sql %s", sql));
 
+	return 0;
+}
+
+int tagal_db_sqlite_noresult_sql_exec(void *lite, const char *sql)
+{
+	int rc;
+	char *ptr;
+	tagal_db_sqlite_t *l = (tagal_db_sqlite_t *)lite;
+	assert(NULL != lite && NULL != sql && NULL != l->db);
+	if(rc = sqlite3_exec(l->db, sql, 
+		NULL, NULL, &ptr)) {
+		ERROR(("sqlite create error: %d- %s", rc, ptr));
+		return DBERR_CONN_ERR;
+	}
 	return 0;
 }
 

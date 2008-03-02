@@ -30,6 +30,7 @@ typedef int (*db_result_new_f)(libtagal_db_result_t *);
 
 typedef int (*db_init_f)(void **, const char *, int);
 typedef int (*db_sql_exec_f)(void *, const char *);
+typedef int (*db_noresult_sql_exec_f)(void *, const char *);
 typedef int (*db_release_f)(void *);
 
 typedef int (*db_get_result_f)(void *, void **);
@@ -46,6 +47,7 @@ struct libtagal_db_t {
 	mempool_t *pool;
 	db_init_f db_init;
 	db_sql_exec_f db_sql_exec;
+	db_noresult_sql_exec_f db_noresult_sql_exec;
 	db_release_f db_release;
 	db_get_result_f db_get_result;
 	db_result_new_f db_result_new;

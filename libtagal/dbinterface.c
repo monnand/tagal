@@ -127,6 +127,11 @@ int libtagal_db_exec_noresult(libtagal_db_t *tagal, const char *sql)
 {
 	libtagal_db_result_t result;
 	int rc;
+	if(NULL != tagal->db_noresult_sql_exec) {
+		if(rc = tagal->db_noresult_sql_exec(tagal->db_data, sql))
+			return rc;
+		return 0;
+	}
 	if(rc = tagal->db_result_new(&result))
 		return rc;
 	if(rc = tagal->db_sql_exec(tagal->db_data, sql))

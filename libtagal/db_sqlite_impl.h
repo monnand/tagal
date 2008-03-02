@@ -33,6 +33,7 @@ typedef struct tagal_db_sqlite_result_t {
 
 int tagal_db_sqlite_init(void **lite, const char *arg, int if_create);
 int tagal_db_sqlite_sql_exec(void *lite, const char *sql);
+int tagal_db_sqlite_noresult_sql_exec(void *lite, const char *sql);
 int tagal_db_sqlite_result_new(libtagal_db_result_t *result);
 int tagal_db_sqlite_release(void *lite);
 

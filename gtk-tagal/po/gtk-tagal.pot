@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-19 14:13+0800\n"
+"POT-Creation-Date: 2008-02-21 01:01+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,7 +32,7 @@ msgstr ""
 msgid "Show Tags"
 msgstr ""
 
-#: src/main_wnd_if.c:72 src/main_wnd_if.c:544
+#: src/main_wnd_if.c:72 src/main_wnd_if.c:558
 msgid "Tagal"
 msgstr ""
 
@@ -80,15 +80,19 @@ msgstr ""
 msgid "Input tags"
 msgstr ""
 
-#: src/main_wnd_if.c:347
+#: src/main_wnd_if.c:349
 msgid "Open Directory"
 msgstr ""
 
-#: src/main_wnd_if.c:354
+#: src/main_wnd_if.c:356
+msgid "Open File"
+msgstr ""
+
+#: src/main_wnd_if.c:363
 msgid "Copy Path"
 msgstr ""
 
-#: src/main_wnd_if.c:361
+#: src/main_wnd_if.c:370
 msgid "Add Tags"
 msgstr ""
 
@@ -126,28 +130,28 @@ msgstr ""
 #. gtk_widget_show (menu_item_image7);
 #. gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (add_files_to_tag), menu_item_image7);
 #.
-#: src/main_wnd_if.c:387 src/main_wnd_if.c:484
+#: src/main_wnd_if.c:396 src/main_wnd_if.c:498
 msgid "Delete"
 msgstr ""
 
-#: src/main_wnd_if.c:458
+#: src/main_wnd_if.c:472
 msgid "Copy Tag"
 msgstr ""
 
 #. TRANSLATORS: Replace this string with your names, one name per line.
-#: src/main_wnd_if.c:537
+#: src/main_wnd_if.c:551
 msgid "translator-credits"
 msgstr ""
 
-#: src/main_wnd_if.c:545
+#: src/main_wnd_if.c:559
 msgid "Copyright (c) 2008 Deng Nan."
 msgstr ""
 
-#: src/main_wnd_if.c:546
+#: src/main_wnd_if.c:560
 msgid "A little tool used to tag your files."
 msgstr ""
 
-#: src/main_wnd_if.c:547
+#: src/main_wnd_if.c:561
 msgid ""
 "Tagal is free software: you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
