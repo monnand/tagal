@@ -225,7 +225,7 @@ tagal_add_tags_LDADD = @PACKAGE_LIBS@ $(INTLLIBS)	\
 		  $(top_srcdir)/../libtagal/libtagal.a	\
 		  $(top_srcdir)/../sqlite/libsqlite3.la
 
-AM_CPPFLAGS = -I$(top_srcdir)/../libtagal/
+AM_CPPFLAGS = -g -I$(top_srcdir)/../libtagal/
 all: all-am
 
 .SUFFIXES:

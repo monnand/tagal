@@ -101,7 +101,7 @@ int tagal_db_sqlite_sql_exec(void *lite, const char *sql)
 		ERROR(("sqlite exec sql '%s' error. errno: %d", sql, rc));
 		return DBERR_SQL_SYNTAX;
 	}
-	TRACE(("ready to exec sql %s", sql));
+	TRACE(("done: %s", sql));
 
 	return 0;
 }
@@ -112,11 +112,17 @@ int tagal_db_sqlite_noresult_sql_exec(void *lite, const char *sql)
 	char *ptr;
 	tagal_db_sqlite_t *l = (tagal_db_sqlite_t *)lite;
 	assert(NULL != lite && NULL != sql && NULL != l->db);
-	if(rc = sqlite3_exec(l->db, sql, 
-		NULL, NULL, &ptr)) {
+	/*
+	if(NULL != l->stmt) {
+		sqlite3_finalize(l->stmt);
+		l->stmt = NULL;
+	}
+	*/
+	if(rc = sqlite3_exec(l->db, sql, NULL, NULL, &ptr)) {
 		ERROR(("sqlite create error: %d- %s", rc, ptr));
 		return DBERR_CONN_ERR;
 	}
+	TRACE(("done: %s", sql));
 	return 0;
 }
 

@@ -21,6 +21,7 @@ gtktagal_config_t *config_handler;
 static int gtktagal_init(const char *dir)
 {
 	config_file_open(&config_handler, dir);
+	g_print("db file: %s\n", config_handler->db_str->str);
 
 	tagal_new(&tagal_handler, libtagal_sqlite, 
 		config_file_get_dbstr(config_handler), 1, NULL);
@@ -73,7 +74,7 @@ main(int argc, char *argv[], char *env[])
 	multifiles_arg.path = argv + 2;
   	multifiles_arg.tagal = tagal_handler;
 	multifiles_arg.exit_on_delete = 1;
-	multifiles_arg.nr_path = argc - 1;
+	multifiles_arg.nr_path = argc - 2;
 	wnd = create_add_tags_to_multifiles_wnd(&multifiles_arg);
   }
 

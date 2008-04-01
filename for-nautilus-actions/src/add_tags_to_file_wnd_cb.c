@@ -19,8 +19,11 @@ on_add_tags_to_file_wnd_delete_event   (GtkWidget       *widget,
 {
 	add_tags_to_file_wnd_arg_t *arg = 
 		(add_tags_to_file_wnd_arg_t *)user_data;
-	if(arg->exit_on_delete)
+	tagal_t *tagal = arg->tagal;
+	if(arg->exit_on_delete) {
+		tagal_release(tagal);
 		exit(0);
+	}
 	return FALSE;
 }
 

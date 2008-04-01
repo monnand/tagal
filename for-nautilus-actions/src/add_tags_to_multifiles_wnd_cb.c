@@ -20,8 +20,11 @@ on_add_tags_to_multifiles_wnd_delete_event
 {
 	add_tags_to_multifiles_wnd_arg_t *arg = 
 		(add_tags_to_multifiles_wnd_arg_t *)user_data;
-	if(arg->exit_on_delete)
+	tagal_t *tagal = arg->tagal;
+	if(arg->exit_on_delete) {
+		tagal_release(tagal);
 		exit(0);
+	}
 
   return FALSE;
 }
@@ -63,6 +66,7 @@ on_add_tags_to_multfile_confirm_clicked
 
 	for(i = 0; i < arg->nr_path; i++) {
 		file_path = path_ptr[i];
+
 		tagal_add_data(tagal, file_path, file_path + strlen(base_dir) + 1);
 		for(tags_iter = g_list_first(all_selected_tags); 
 			NULL != tags_iter;
@@ -74,16 +78,20 @@ on_add_tags_to_multfile_confirm_clicked
 			tagal_data_add_tag_to_path(tagal, file_path, tag_tag);
 			g_free(tag_tag);
 		}
-		if(NULL != ftags)
+		if(NULL != ftags) {
 			tagal_data_add_tags_to_path(tagal, file_path, ftags->str);
+		}
 	}
 	g_list_foreach(all_selected_tags, (GFunc)gtk_tree_path_free, NULL);
+
 	g_list_free (all_selected_tags);
 	if(NULL != ftags)
 		g_string_free(ftags, TRUE);
 	gtk_widget_destroy(arg->wnd);
-	if(arg->exit_on_delete)
+	if(arg->exit_on_delete) {
+		tagal_release(tagal);
 		exit(0);
+	}
 }
 
 

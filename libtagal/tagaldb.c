@@ -125,7 +125,7 @@ int tagaldb_select_by_path(libtagal_db_t *db,
 	}
 
 	snprintf(sql_ptr, max_len, 
-		"select id, name, path from files where path='%s'", path);
+		"select id, name, path from files where path='%s';", path);
 	if(max_len = libtagal_db_exec_result(db, result, sql_ptr)) {
 		if(sql_ptr != sql)
 			mempool_free(db->pool, sql_ptr);
@@ -192,7 +192,7 @@ int tagaldb_add_tag_to_fid(libtagal_db_t *db, const int id, const char *tag)
 	memset(sql, 0, sizeof(sql));
 
 	/* If has this file */
-	snprintf(sql, sizeof(sql), "select id from files where id=%d", id);
+	snprintf(sql, sizeof(sql), "select id from files where id=%d;", id);
 	TRACE(("ready to exec sql: %s", sql));
 	if(rc = libtagal_db_sql_exec(db, sql))
 		return rc;
@@ -206,11 +206,15 @@ int tagaldb_add_tag_to_fid(libtagal_db_t *db, const int id, const char *tag)
 		"(tag) values ('%s');", tag);
 	
 	TRACE(("ready to exec sql: %s", sql));
+	if(rc = libtagal_db_exec_noresult(db, sql))
+		return rc;
+	/*
 	if(rc = libtagal_db_exec_result(db, result, sql))
 		return rc;
 	while((rc = libtagal_db_result_next(result)) == DB_MORE_DATA);
 	if(rc)
 		return rc;
+	*/
 
 	/* Test if this tag has connected with this file */
 	snprintf(sql, sizeof(sql), "select m.id from tag_file_map as m, "
@@ -221,7 +225,7 @@ int tagaldb_add_tag_to_fid(libtagal_db_t *db, const int id, const char *tag)
 		return rc;
 	if((rc = libtagal_db_result_next(result)) == DB_MORE_DATA) {
 		TRACE(("THIS PAIR AREADY EXIST!"));
-		return 0;
+		return libtagal_db_result_release(result);
 	}
 	if(rc)
 		return rc;
@@ -239,7 +243,7 @@ int tagaldb_add_tag_to_fid(libtagal_db_t *db, const int id, const char *tag)
 
 	/* Updata the nr reference to this tag */
 	snprintf(sql, sizeof(sql), "update tags set nr_ref=nr_ref+1 "
-			"where tag='%s'", tag); 
+			"where tag='%s';", tag); 
 	TRACE(("ready to exec sql: %s", sql));
 	if(rc = libtagal_db_exec_result(db, result, sql))
 		return rc;
@@ -262,7 +266,7 @@ int tagaldb_add_tag_to_path(libtagal_db_t *db,
 
 	/* If has this file */
 	snprintf(sql, sizeof(sql), "select id from files "
-		"where path='%s'", path);
+		"where path='%s';", path);
 	TRACE(("ready to exec sql: %s", sql));
 	if(rc = libtagal_db_sql_exec(db, sql))
 		return rc;
@@ -276,10 +280,14 @@ int tagaldb_add_tag_to_path(libtagal_db_t *db,
 	snprintf(sql, sizeof(sql), "insert or ignore into tags "
 		"(tag) values ('%s');", tag);
 	TRACE(("ready to exec sql: %s", sql));
+	/*
 	if(rc = libtagal_db_exec_result(db, result, sql))
 		return rc;
 	while((rc = libtagal_db_result_next(result)) == DB_MORE_DATA);
 	if(rc)
+		return rc;
+	*/
+	if(rc = libtagal_db_exec_noresult(db, sql))
 		return rc;
 
 	/* Test if this tag has connected with this file */
@@ -291,7 +299,7 @@ int tagaldb_add_tag_to_path(libtagal_db_t *db,
 		return rc;
 	if((rc = libtagal_db_result_next(result)) == DB_MORE_DATA) {
 		TRACE(("THIS PAIR AREADY EXIST!"));
-		return 0;
+		return libtagal_db_result_release(result);
 	}
 	if(rc)
 		return rc;
@@ -309,7 +317,7 @@ int tagaldb_add_tag_to_path(libtagal_db_t *db,
 
 	/* Updata the nr reference to this tag */
 	snprintf(sql, sizeof(sql), "update tags set nr_ref=nr_ref+1 "
-			"where tag='%s'", tag); 
+			"where tag='%s';", tag); 
 	TRACE(("ready to exec sql: %s", sql));
 	if(rc = libtagal_db_exec_noresult(db, sql))
 		return rc;
@@ -353,7 +361,7 @@ int tagaldb_del_tag_to_fid(libtagal_db_t *db, const int fid, const char *tag)
 		return rc;
 
 	/* delete the unrefered tags */
-	snprintf(sql, sizeof(sql), "delete from tags where nr_ref <= 0");
+	snprintf(sql, sizeof(sql), "delete from tags where nr_ref <= 0;");
 	TRACE(("ready to exec sql: %s", sql));
 	if(rc = libtagal_db_exec_noresult(db, sql))
 		return rc;
@@ -442,7 +450,7 @@ int tagaldb_add_file(libtagal_db_t *db, const char *path, const char *name)
 {
 	char sql[1024];
 	snprintf(sql, sizeof(sql), "insert or ignore into files "
-		"(path, name) values ('%s', '%s')", path, name);
+		"(path, name) values ('%s', '%s');", path, name);
 	TRACE(("ready to exec sql: %s", sql));
 	return libtagal_db_exec_noresult(db, sql);
 }
