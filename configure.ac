@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.61)
-AC_INIT(tagal, 0.2a, monnand@gmail.com)
+AC_INIT(tagal, 0.2.2, monnand@gmail.com)
 AC_CONFIG_SRCDIR([libtagal/error.c])
 AM_CONFIG_HEADER([include/config.h])
 AM_INIT_AUTOMAKE(tagal, 0.2a)
