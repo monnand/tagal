@@ -30,4 +30,6 @@ gtk_tagal_LDADD = @PACKAGE_LIBS@ $(INTLLIBS)	\
 		  $(top_srcdir)/../libtagal/libtagal.a	\
 		  $(top_srcdir)/../sqlite/libsqlite3.la
 
-AM_CPPFLAGS = -I$(top_srcdir)/../libtagal/
+AM_CPPFLAGS = -I$(top_srcdir)/../libtagal/	\
+		-Wl,-R/usr/local/lib 
+

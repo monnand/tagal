@@ -5,7 +5,7 @@
 #define HAVE_ASSERT_H 1
 
 /* Define to 1 if you have the <dlfcn.h> header file. */
-#define HAVE_DLFCN_H 1
+/* #undef HAVE_DLFCN_H */
 
 /* Define to 1 if you don't have `vprintf' but do have `_doprnt.' */
 /* #undef HAVE_DOPRNT */
@@ -79,13 +79,13 @@
 #define PACKAGE_NAME "tagal"
 
 /* Define to the full name and version of this package. */
-#define PACKAGE_STRING "tagal 0.2a"
+#define PACKAGE_STRING "tagal 0.2.2"
 
 /* Define to the one symbol short name of this package. */
 #define PACKAGE_TARNAME "tagal"
 
 /* Define to the version of this package. */
-#define PACKAGE_VERSION "0.2a"
+#define PACKAGE_VERSION "0.2.2"
 
 /* Define to 1 if you have the ANSI C header files. */
 #define STDC_HEADERS 1
