@@ -1,0 +1,2 @@
+![http://tagal.googlecode.com/files/tagal.screenshot.jpg](http://tagal.googlecode.com/files/tagal.screenshot.jpg)
+![http://tagal.googlecode.com/files/right.click.jpg](http://tagal.googlecode.com/files/right.click.jpg)
